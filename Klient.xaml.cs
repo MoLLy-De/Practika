@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -45,6 +45,15 @@ namespace V10AF
             Products = new ObservableCollection<DB.Product>(connect.Product.ToList());
             Providers = new ObservableCollection<DB.Provider>(connect.Provider.ToList());
             DataContext = this;
+
+            FilterBoxCategory.Items.Add("Кольцо");
+            FilterBoxCategory.Items.Add("Колье");
+            FilterBoxCategory.Items.Add("Серьги");
+            FilterBoxCategory.Items.Add("Браслет");
+            FilterBoxCategory.Items.Add("Подвеска");
+            FilterBoxCategory.Items.Add("Ожерелье");
+            FilterBoxCategory.Items.Add("Брошь");
+            FilterBoxCategory.Items.Add("Все категории");
         }
 
         private void CloseBut_Click(object sender, RoutedEventArgs e)
@@ -99,6 +108,19 @@ namespace V10AF
                 if (provider.NameProvider == "Все производители") return true;
                 return (prov as Product).ProductProvider == provider.NameProvider;
 
+            });
+        }
+
+        private void FilterBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string prod = FilterBoxCategory.SelectedItem.ToString();
+
+            var view = CollectionViewSource.GetDefaultView(ProductList.ItemsSource);
+
+            view.Filter = new Predicate<object>(prouct =>
+            {
+                if (prod == "Все категории") return true;
+                return (prouct as Product).ProductCategory.ToString() == prod;
             });
         }
     }
