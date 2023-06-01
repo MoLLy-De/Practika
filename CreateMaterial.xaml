@@ -1,0 +1,51 @@
+﻿<Window x:Class="V10AF.CreateMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:V10AF"
+        mc:Ignorable="d"
+        Title="Создание материала" Height="900" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="685"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Source="logo.png" Grid.Row="0" Grid.Column="0"></Image>
+        <Label Content="Какой-то ювелир" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <StackPanel x:Name="ProductPanel" Grid.Row="1" Grid.Column="1" DataContext="{Binding NewProduct}" Margin="0,0,0,-149">
+            <Label Content="Номер" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="ArticleText" Height="25" Margin="0 0 0 5" Text="{Binding ProductArticleNumber}"></TextBox>
+            <Label Content="Имя" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="NameText" Height="25" Margin="0 0 0 5" Text="{Binding ProductName}"></TextBox>
+            <Label Content="Описание" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="DescriptionText" Height="25" Margin="0 0 0 5" Text="{Binding ProductDescription}"></TextBox>
+            <Label Content="Категория" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <ComboBox x:Name="CategoryBox" Height="25" Margin="0 0 0 5" Text="{Binding ProductCategory}"></ComboBox>
+            <Label Content="Поставщик" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <ComboBox x:Name="ProviderBox" Height="25" Margin="0 0 0 5" DisplayMemberPath="NameProvider" SelectedItem="{Binding Provider}"></ComboBox>
+            <Label Content="Производитель" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="ManufactureText" Height="25" Margin="0 0 0 5" Text="{Binding ProductManufacturer}"></TextBox>
+            <Label Content="Цена" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="CostText" Height="25" Margin="0 0 0 5" Text="{Binding ProductCost}"></TextBox>
+            <Label Content="Действующая скидка" Height="22" Margin="0 0 0 5" FontSize="9" ></Label>
+            <TextBox x:Name="DiscountText" Height="25" Margin="0 0 0 5" Text="{Binding ProductDiscount}"></TextBox>
+            <Label Content="Максимальная скидка" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="MaxDiscountText" Height="25" Margin="0 0 0 5" Text="{Binding ProductDiscountAmount}"></TextBox>
+            <Label Content="Остаток" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="StockText" Height="25" Margin="0 0 0 5" Text="{Binding ProductQuantityInStock}"></TextBox>
+            <Label Content="Единицы измерения" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <TextBox x:Name="UnitText" Height="25" Margin="0 0 0 5" Text="{Binding Unit}"></TextBox>
+            <Label Content="Изображение" Height="22" Margin="0 0 0 5" FontSize="9"></Label>
+            <Image Height="22" Margin="0 0 0 5" x:Name="Pict" Source="{Binding ProductPhoto}"></Image>
+            <Button x:Name="SlectImage" Height="25" Margin="0 0 0 5" Content="Выбрать изображение" FontFamily="Comic Sans MS" Background="#FF498C51" Foreground="White" Click="SlectImage_Click"></Button>
+            <Button x:Name="UpBut" Height="25" Margin="0 15 0 5" Content="Добавить" Click="UpBut_Click" FontFamily="Comic Sans MS" Background="#FF498C51" Foreground="White"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
